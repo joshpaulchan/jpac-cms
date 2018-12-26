@@ -11,5 +11,4 @@ script: true
 
 # build, tag, and deploy docker images
 after_success:
-  - provider: script
-    script: docker_push.sh
+  - script: docker_push.sh
