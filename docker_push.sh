@@ -6,7 +6,7 @@
 # - TRAVIS_PULL_REQUEST or TRAVIS_BRANCH
 
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-if [ $TRAVIS_PULL_REQUEST ]; then
+if [ ! $TRAVIS_PULL_REQUEST == "false" ]; then
     TAG="pr-$TRAVIS_PULL_REQUEST"
 else
     TAG=$TRAVIS_BRANCH
