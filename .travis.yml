@@ -10,5 +10,4 @@ install: true
 script: true
 
 # build, tag, and deploy docker images
-after_success:
-  - script: docker_push.sh
+after_success: docker_push.sh
