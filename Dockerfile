@@ -5,8 +5,8 @@ LABEL Name=cms Version=0.0.1
 # set env vars
 ENV NODE_ENV=production
 
-# install strapi
-RUN npm install -g strapi
+# install build tools and strapi
+RUN apk update && apk add yarn python g++ make && rm -rf /var/cache/apk/* && npm install -g strapi
 
 # set working directory
 WORKDIR /opt/cms
