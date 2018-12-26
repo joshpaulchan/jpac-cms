@@ -1,10 +1,13 @@
 #!/bin/bash
-echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+# Must define the following variables in the environment:
+# - DOCKER_USERNAME
+# - DOCKER_PASSWORD
+# - REPOSITORY_NAME (i.e. `joshpaulchan/cms`)
+# - TRAVIS_PULL_REQUEST or TRAVIS_BRANCH
 
-REPOSITORY_NAME="joshpaulchan/cms"
-TAG="latest"
+echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 if [ $TRAVIS_PULL_REQUEST ]; then
-    TAG=$TRAVIS_PULL_REQUEST_BRANCH
+    TAG="pr-$TRAVIS_PULL_REQUEST"
 else
     TAG=$TRAVIS_BRANCH
 fi
