@@ -11,6 +11,8 @@ script: true
 
 # build, tag, and deploy docker images
 deploy:
-  provider: script
-  script:
-    - bash docker_push.sh
+  - provider: script
+    script:
+      - bash docker_push.sh
+    on:
+      all_branches: true
