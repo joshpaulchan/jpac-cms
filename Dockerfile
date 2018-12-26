@@ -2,8 +2,8 @@ FROM node:11
 
 LABEL Name=cms Version=0.0.1
 
-# install build tools and strapi
-RUN npm install -g strapi
+# install build tools and strapi (unsafe-perm needs to be set to build strapi)
+RUN npm config set unsafe-perm=true && npm install -g strapi
 
 # set working directory
 WORKDIR /opt/cms
