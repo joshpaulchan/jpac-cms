@@ -1,4 +1,4 @@
-FROM node:11
+FROM node:11-alpine
 
 LABEL Name=cms Version=0.0.1
 
@@ -11,8 +11,9 @@ WORKDIR /opt/cms
 # pull in source + dependencies list
 ADD . /opt/cms
 
-# install dependencies
+# install dependencies and configure project
 RUN npm install
+RUN npm setup
 
 EXPOSE 1337
 
