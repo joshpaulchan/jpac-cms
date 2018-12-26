@@ -9,5 +9,7 @@ else
     $TAG=$TRAVIS_BRANCH
 fi
 # expansion maps '/' in branch names to '-'
-docker build --rm -t $REPOSITORY_NAME:$($TAG | tr '/' '-') .
+ESCAPED_TAG=$($TAG | tr '/' '-')
+echo "Tagging Docker build as: $REPOSITORY_NAME:$ESCAPED_TAG. "
+docker build --rm -t $REPOSITORY_NAME:$ESCAPED_TAG .
 docker push $REPOSITORY_NAME
