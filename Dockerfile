@@ -13,7 +13,7 @@ ADD . /opt/cms
 
 # install dependencies and configure project
 RUN npm install
-RUN npm run setup
+RUN npm run setup --plugins
 
 EXPOSE 1337
 
